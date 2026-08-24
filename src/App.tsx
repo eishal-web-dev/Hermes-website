@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const LIVE = 'https://loveluxury.com/uk/';
 const pieces = [
-  { number: '01', name: 'Birkin 25', house: 'Hermès', image: '/media/birkin.webp', href: `${LIVE}shop/hermes/` },
+  { number: '01', name: 'Birkin 25', house: 'Hermès', image: '/media/birkin-hd.webp', href: `${LIVE}shop/hermes/` },
   { number: '02', name: 'Nautilus', house: 'Patek Philippe', image: '/media/patek.webp', href: `${LIVE}shop/watches/` },
   { number: '03', name: 'Alhambra', house: 'Van Cleef & Arpels', image: '/media/alhambra.webp', href: `${LIVE}shop/jewellery/` },
 ];
@@ -47,7 +47,7 @@ function Hero() {
   return <section className="mono-hero" id="top">
     <div className="mono-folds"/><div className="mono-hero__word">LOVE LUXURY</div>
     <p className="mono-kicker">THE PRIVATE GALLERY · LONDON</p>
-    <div className="mono-hero__object-stage"><motion.img className="mono-hero__object" src="/media/birkin.webp" alt="Hermès Birkin 25" initial={{ opacity: 0, y: 70, scale: .9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.35, delay: .2, ease: [0.16, 1, 0.3, 1] }} whileHover={{ scale: 1.025, y: -8 }}/></div>
+    <div className="mono-hero__object-stage"><motion.img className="mono-hero__object" src="/media/birkin-hd.webp" alt="Hermès Birkin 25" initial={{ opacity: 0, y: 70, scale: .9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.35, delay: .2, ease: [0.16, 1, 0.3, 1] }} whileHover={{ scale: 1.025, y: -8 }}/></div>
     <div className="mono-hero__copy"><span>01 / THE ICON</span><h1>Objects of<br/>lasting desire.</h1><p>Exceptional handbags, watches and jewellery—authenticated, curated and presented without compromise.</p></div>
     <a className="mono-pill" href={`${LIVE}shop/`} target="_blank" rel="noreferrer">Enter collection <ArrowRight size={14}/></a>
     <a className="mono-scroll" href="#story"><ArrowDown size={14}/></a>
@@ -60,7 +60,7 @@ function Story() {
     <motion.div className="mono-story__copy" {...reveal}><p>Love Luxury brings the world’s most coveted pieces into one considered collection. Every object is chosen for rarity, condition and provenance.</p><p>Visit us in Knightsbridge or discover the edit online. Our specialists are here to help you buy and sell with complete confidence.</p></motion.div>
     <motion.div className="mono-gallery" {...reveal}>
       <VcaFrame image="/media/alhambra.webp" label="Van Cleef & Arpels"/>
-      <VcaFrame image="/media/birkin.webp" label="Hermès" className="vca-frame--hero"/>
+      <VcaFrame image="/media/birkin-hd.webp" label="Hermès" className="vca-frame--hero"/>
       <VcaFrame image="/media/patek.webp" label="Patek Philippe"/>
     </motion.div>
   </section>;
@@ -71,7 +71,7 @@ function Collection() {
     <motion.div className="mono-section-title" {...reveal}><span>02</span><h2>The collection.</h2></motion.div>
     <motion.div className="mono-product-stage" {...reveal}>
       <VcaFrame image="/media/patek.webp" label="Previous" className="vca-frame--side"/>
-      <motion.div className="mono-featured" whileHover={{ scale: 1.015 }} transition={{ duration: .7 }}><span className="mono-featured__index">01</span><img src="/media/birkin.webp" alt="Hermès Birkin 25"/><div><small>HERMÈS</small><h3>Birkin 25</h3></div></motion.div>
+      <motion.div className="mono-featured" whileHover={{ scale: 1.015 }} transition={{ duration: .7 }}><span className="mono-featured__index">01</span><img src="/media/birkin-hd.webp" alt="Hermès Birkin 25"/><div><small>HERMÈS</small><h3>Birkin 25</h3></div></motion.div>
       <VcaFrame image="/media/alhambra.webp" label="Next" className="vca-frame--side"/>
     </motion.div>
     <motion.div className="mono-list" {...reveal}>{pieces.map(piece => <a key={piece.number} href={piece.href} target="_blank" rel="noreferrer"><span>{piece.number}</span><strong>{piece.house}</strong><em>{piece.name}</em><ArrowRight size={18}/></a>)}</motion.div>

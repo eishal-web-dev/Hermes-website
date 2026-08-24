@@ -17,11 +17,9 @@ const reveal = {
 };
 
 function VcaFrame({ image, label, className = '' }: { image: string; label: string; className?: string }) {
-  const clipId = `clip-${label.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
   return <motion.figure className={`vca-frame ${className}`} whileHover={{ scale: 1.025 }} transition={{ duration: .55, ease: [0.16, 1, 0.3, 1] }}>
     <svg viewBox="0 0 100 100" role="img" aria-label={label}>
-      <defs><clipPath id={clipId}><path d="M50 18 C40 -3 13 2 17 27 C-5 38 2 65 27 61 C35 86 65 86 73 61 C98 65 105 38 83 27 C87 2 60 -3 50 18 Z"/></clipPath></defs>
-      <image href={image} x="4" y="4" width="92" height="92" preserveAspectRatio="xMidYMid meet" clipPath={`url(#${clipId})`}/>
+      <image href={image} x="15" y="15" width="70" height="66" preserveAspectRatio="xMidYMid meet"/>
       <path className="vca-frame__line vca-frame__line--outer" d="M50 18 C40 -3 13 2 17 27 C-5 38 2 65 27 61 C35 86 65 86 73 61 C98 65 105 38 83 27 C87 2 60 -3 50 18 Z"/>
       <path className="vca-frame__line vca-frame__line--inner" d="M50 22 C41 4 19 7 22 29 C3 38 8 60 29 56 C37 77 63 77 71 56 C92 60 97 38 78 29 C81 7 59 4 50 22 Z"/>
     </svg>
@@ -49,7 +47,7 @@ function Hero() {
   return <section className="mono-hero" id="top">
     <div className="mono-folds"/><div className="mono-hero__word">LOVE LUXURY</div>
     <p className="mono-kicker">THE PRIVATE GALLERY · LONDON</p>
-    <motion.img className="mono-hero__object" src="/media/birkin.webp" alt="Hermès Birkin 25" initial={{ opacity: 0, y: 70, scale: .9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.35, delay: .2, ease: [0.16, 1, 0.3, 1] }} whileHover={{ scale: 1.025, y: -8 }}/>
+    <div className="mono-hero__object-stage"><motion.img className="mono-hero__object" src="/media/birkin.webp" alt="Hermès Birkin 25" initial={{ opacity: 0, y: 70, scale: .9 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 1.35, delay: .2, ease: [0.16, 1, 0.3, 1] }} whileHover={{ scale: 1.025, y: -8 }}/></div>
     <div className="mono-hero__copy"><span>01 / THE ICON</span><h1>Objects of<br/>lasting desire.</h1><p>Exceptional handbags, watches and jewellery—authenticated, curated and presented without compromise.</p></div>
     <a className="mono-pill" href={`${LIVE}shop/`} target="_blank" rel="noreferrer">Enter collection <ArrowRight size={14}/></a>
     <a className="mono-scroll" href="#story"><ArrowDown size={14}/></a>

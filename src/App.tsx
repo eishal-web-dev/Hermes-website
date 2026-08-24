@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const LIVE = 'https://loveluxury.com/uk/';
 const pieces = [
@@ -56,6 +56,7 @@ function Hero() {
 
 function Story() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
   const showcase = [
     { image: '/media/birkin-hd.webp', label: 'Hermès Birkin 25' },
     { image: '/media/patek.webp', label: 'Patek Philippe Nautilus' },
@@ -63,31 +64,38 @@ function Story() {
   ];
   const previous = (active + showcase.length - 1) % showcase.length;
   const next = (active + 1) % showcase.length;
-  const move = (direction: number) => setActive(value => (value + direction + showcase.length) % showcase.length);
+  const move = (step: number) => {
+    setDirection(step);
+    setActive(value => (value + step + showcase.length) % showcase.length);
+  };
 
   return <section className="mono-story" id="story">
     <motion.div className="mono-section-title" {...reveal}><span>01</span><h2>A private gallery<br/>for modern icons.</h2></motion.div>
     <motion.div className="mono-story__copy" {...reveal}><p>Love Luxury brings the world’s most coveted pieces into one considered collection. Every object is chosen for rarity, condition and provenance.</p><p>Visit us in Knightsbridge or discover the edit online. Our specialists are here to help you buy and sell with complete confidence.</p></motion.div>
     <motion.div className="mono-gallery mono-gallery--carousel" {...reveal}>
       <button className="mono-gallery__arrow mono-gallery__arrow--left" onClick={() => move(-1)} aria-label="Previous piece"><ChevronLeft/></button>
-      <VcaFrame key={`left-${showcase[previous].label}`} image={showcase[previous].image} label={showcase[previous].label} className="vca-frame--preview"/>
-      <VcaFrame key={`main-${showcase[active].label}`} image={showcase[active].image} label={showcase[active].label} className="vca-frame--hero"/>
-      <VcaFrame key={`right-${showcase[next].label}`} image={showcase[next].image} label={showcase[next].label} className="vca-frame--preview"/>
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          className="mono-gallery__track"
+          key={active}
+          custom={direction}
+          initial={{ opacity: 0, x: direction > 0 ? 85 : -85 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: direction > 0 ? -85 : 85 }}
+          transition={{ duration: .72, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <VcaFrame image={showcase[previous].image} label={showcase[previous].label} className="vca-frame--preview"/>
+          <VcaFrame image={showcase[active].image} label={showcase[active].label} className="vca-frame--hero"/>
+          <VcaFrame image={showcase[next].image} label={showcase[next].label} className="vca-frame--preview"/>
+        </motion.div>
+      </AnimatePresence>
       <button className="mono-gallery__arrow mono-gallery__arrow--right" onClick={() => move(1)} aria-label="Next piece"><ChevronRight/></button>
       <div className="mono-gallery__counter">{String(active + 1).padStart(2, '0')} <span>/ 03</span></div>
     </motion.div>
-  </section>;
-}
-
-function Collection() {
-  return <section className="mono-collection" id="collection">
-    <motion.div className="mono-section-title" {...reveal}><span>02</span><h2>The collection.</h2></motion.div>
-    <motion.div className="mono-product-stage" {...reveal}>
-      <VcaFrame image="/media/patek.webp" label="Previous" className="vca-frame--side"/>
-      <motion.div className="mono-featured" whileHover={{ scale: 1.015 }} transition={{ duration: .7 }}><span className="mono-featured__index">01</span><img src="/media/birkin-hd.webp" alt="Hermès Birkin 25"/><div><small>HERMÈS</small><h3>Birkin 25</h3></div></motion.div>
-      <VcaFrame image="/media/alhambra.webp" label="Next" className="vca-frame--side"/>
+    <motion.div className="mono-story__catalog" {...reveal}>
+      <div className="mono-story__catalog-head"><span>THE COLLECTION</span><small>SELECT A PIECE TO DISCOVER MORE</small></div>
+      <div className="mono-list">{pieces.map((piece, index) => <a key={piece.number} href={piece.href} target="_blank" rel="noreferrer" onMouseEnter={() => { setDirection(index >= active ? 1 : -1); setActive(index); }}><span>{piece.number}</span><strong>{piece.house}</strong><em>{piece.name}</em><ArrowRight size={18}/></a>)}</div>
     </motion.div>
-    <motion.div className="mono-list" {...reveal}>{pieces.map(piece => <a key={piece.number} href={piece.href} target="_blank" rel="noreferrer"><span>{piece.number}</span><strong>{piece.house}</strong><em>{piece.name}</em><ArrowRight size={18}/></a>)}</motion.div>
   </section>;
 }
 
@@ -95,4 +103,4 @@ function Closing() {
   return <><section className="mono-closing"><span>SELL WITH LOVE LUXURY</span><h2>Your piece.<br/>Our expertise.</h2><p>Receive a private valuation from our specialists and sell with confidence.</p><a href={`${LIVE}sell/`} target="_blank" rel="noreferrer">Start a valuation <ArrowRight size={15}/></a></section><footer className="mono-footer"><strong>LOVE LUXURY</strong><span>KNIGHTSBRIDGE · LONDON</span><span>© 2026</span></footer></>;
 }
 
-export default function App() { return <main className="mono-site"><Header/><Hero/><Story/><Collection/><Closing/></main>; }
+export default function App() { return <main className="mono-site"><Header/><Hero/><Story/><Closing/></main>; }

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const LIVE = 'https://loveluxury.com/uk/';
 const pieces = [
@@ -16,12 +16,11 @@ const reveal = {
   transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
 };
 
-function VcaFrame({ image, label, className = '' }: { image: string; label: string; className?: string }) {
-  return <motion.figure className={`vca-frame ${className}`} whileHover={{ scale: 1.025 }} transition={{ duration: .55, ease: [0.16, 1, 0.3, 1] }}>
+function VcaFrame({ image, label, className = '', shape = 'clover' }: { image: string; label: string; className?: string; shape?: 'clover' | 'circle' }) {
+  return <motion.figure layout className={`vca-frame ${className} vca-frame--${shape}`} whileHover={{ scale: 1.025 }} transition={{ layout: { type: 'spring', stiffness: 115, damping: 22, mass: .9 }, duration: .55 }}>
     <svg viewBox="0 0 100 100" role="img" aria-label={label}>
       <image href={image} x="15" y="15" width="70" height="66" preserveAspectRatio="xMidYMid meet"/>
-      <path className="vca-frame__line vca-frame__line--outer" d="M50 18 C40 -3 13 2 17 27 C-5 38 2 65 27 61 C35 86 65 86 73 61 C98 65 105 38 83 27 C87 2 60 -3 50 18 Z"/>
-      <path className="vca-frame__line vca-frame__line--inner" d="M50 22 C41 4 19 7 22 29 C3 38 8 60 29 56 C37 77 63 77 71 56 C92 60 97 38 78 29 C81 7 59 4 50 22 Z"/>
+      {shape === 'circle' ? <><circle className="vca-frame__line vca-frame__line--outer" cx="50" cy="48" r="43"/><circle className="vca-frame__line vca-frame__line--inner" cx="50" cy="48" r="39"/></> : <><path className="vca-frame__line vca-frame__line--outer" d="M50 18 C40 -3 13 2 17 27 C-5 38 2 65 27 61 C35 86 65 86 73 61 C98 65 105 38 83 27 C87 2 60 -3 50 18 Z"/><path className="vca-frame__line vca-frame__line--inner" d="M50 22 C41 4 19 7 22 29 C3 38 8 60 29 56 C37 77 63 77 71 56 C92 60 97 38 78 29 C81 7 59 4 50 22 Z"/></>}
     </svg>
     <figcaption>{label}</figcaption>
   </motion.figure>;
@@ -64,6 +63,7 @@ function Story() {
   ];
   const previous = (active + showcase.length - 1) % showcase.length;
   const next = (active + 1) % showcase.length;
+  const visible = [previous, active, next];
   const move = (step: number) => {
     setDirection(step);
     setActive(value => (value + step + showcase.length) % showcase.length);
@@ -74,21 +74,9 @@ function Story() {
     <motion.div className="mono-story__copy" {...reveal}><p>Love Luxury brings the world’s most coveted pieces into one considered collection. Every object is chosen for rarity, condition and provenance.</p><p>Visit us in Knightsbridge or discover the edit online. Our specialists are here to help you buy and sell with complete confidence.</p></motion.div>
     <motion.div className="mono-gallery mono-gallery--carousel" {...reveal}>
       <button className="mono-gallery__arrow mono-gallery__arrow--left" onClick={() => move(-1)} aria-label="Previous piece"><ChevronLeft/></button>
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.div
-          className="mono-gallery__track"
-          key={active}
-          custom={direction}
-          initial={{ opacity: 0, x: direction > 0 ? 85 : -85 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: direction > 0 ? -85 : 85 }}
-          transition={{ duration: .72, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <VcaFrame image={showcase[previous].image} label={showcase[previous].label} className="vca-frame--preview"/>
-          <VcaFrame image={showcase[active].image} label={showcase[active].label} className="vca-frame--hero"/>
-          <VcaFrame image={showcase[next].image} label={showcase[next].label} className="vca-frame--preview"/>
-        </motion.div>
-      </AnimatePresence>
+      <div className={`mono-gallery__track is-moving-${direction > 0 ? 'right' : 'left'}`}>
+        {visible.map((itemIndex, position) => <VcaFrame key={showcase[itemIndex].label} image={showcase[itemIndex].image} label={showcase[itemIndex].label} shape={position === 1 ? 'circle' : 'clover'} className={position === 1 ? 'vca-frame--hero' : 'vca-frame--preview'}/>)}
+      </div>
       <button className="mono-gallery__arrow mono-gallery__arrow--right" onClick={() => move(1)} aria-label="Next piece"><ChevronRight/></button>
       <div className="mono-gallery__counter">{String(active + 1).padStart(2, '0')} <span>/ 03</span></div>
     </motion.div>

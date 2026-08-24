@@ -154,28 +154,20 @@ function Navbar() {
     <>
       <nav className="mfz-nav">
         <div className="mfz-shell mfz-nav__inner">
+          <button className="fashion-menu" onClick={() => setOpen(true)} aria-label="Open menu">
+            <Menu size={18} /><span>MENU</span>
+          </button>
+
           <a className="mfz-nav__logo" href="#top">
-            <span className="brand-monogram" aria-hidden="true"><i>L</i><i>L</i></span>
             <span className="brand-wordmark">
               <strong>LOVE LUXURY</strong>
-              <small>KNIGHTSBRIDGE · LONDON</small>
             </span>
           </a>
 
-          <div className="mfz-nav__links">
+          <div className="mfz-nav__actions">
             <a href={`${LIVE}shop/`} target="_blank" rel="noreferrer">SHOP</a>
-            <a href={`${LIVE}shop/handbags/`} target="_blank" rel="noreferrer">HANDBAGS</a>
-            <a href={`${LIVE}shop/watches/`} target="_blank" rel="noreferrer">WATCHES</a>
-            <a href={`${LIVE}shop/jewellery/`} target="_blank" rel="noreferrer">JEWELLERY</a>
+            <a href={`${LIVE}sell/`} target="_blank" rel="noreferrer">SELL</a>
           </div>
-
-          <a className="mfz-nav__cta" href={`${LIVE}sell/`} target="_blank" rel="noreferrer">
-            SELL WITH US <ArrowRight size={15} />
-          </a>
-
-          <button className="mfz-nav__menu" onClick={() => setOpen(true)} aria-label="Open menu">
-            <Menu size={22} />
-          </button>
         </div>
       </nav>
 
@@ -204,6 +196,25 @@ function Navbar() {
         )}
       </AnimatePresence>
     </>
+  );
+}
+
+function CampaignHero() {
+  return (
+    <section className="campaign-hero" id="top">
+      <div className="campaign-hero__image" aria-hidden="true" />
+      <div className="campaign-hero__shade" />
+      <div className="campaign-hero__brand">LOVE LUXURY</div>
+      <div className="campaign-hero__content">
+        <span>THE PRIVATE GALLERY · KNIGHTSBRIDGE</span>
+        <h1>Icons are not<br />owned. They are<br /><em>inherited.</em></h1>
+        <div className="campaign-hero__actions">
+          <a href="#icons">DISCOVER THE COLLECTION</a>
+          <a href={`${LIVE}sell/`} target="_blank" rel="noreferrer">SELL WITH US</a>
+        </div>
+      </div>
+      <a className="campaign-hero__scroll" href="#icons">SCROLL TO DISCOVER <span>↓</span></a>
+    </section>
   );
 }
 
@@ -319,7 +330,7 @@ function Hero() {
 
   return (
     <section
-      id="top"
+      id="icons"
       ref={sectionRef}
       className="mfz-hero"
       style={{ background: product.bgGradient }}
@@ -687,6 +698,7 @@ export default function App() {
   return (
     <div className="site">
       <Navbar />
+      <CampaignHero />
       <Hero />
       <Collections />
       <TrustStrip />

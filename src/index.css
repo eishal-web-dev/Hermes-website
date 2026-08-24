@@ -131,7 +131,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: 0;
   z-index: -3;
-  background: url('/love-luxury-campaign.png') center 34% / cover no-repeat;
+  background: url('https://raw.githubusercontent.com/eishal-web-dev/Hermes-website/main/public/love-luxury-campaign.png') center 34% / cover no-repeat;
   transform: scale(1.025);
   animation: campaign-breathe 12s ease-in-out infinite alternate;
 }

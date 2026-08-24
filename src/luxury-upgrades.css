@@ -193,7 +193,7 @@
 .trust-strip { background: #0a0908 !important; border-block: 1px solid rgba(239,225,199,.16); }
 .showroom__word { font-family: 'Cormorant Garamond', serif !important; font-weight: 500 !important; letter-spacing: -.04em !important; }
 .footer__brand { display: flex; align-items: center; gap: 18px; font-family: 'Manrope', sans-serif !important; letter-spacing: .22em !important; }
-.footer__brand > span:last-child { display: flex; flex-direction: column; font-size: clamp(34px, 5vw, 68px); line-height: .85; }
+.footer__brand > span:last-child { display: flex; flex-direction: column; max-width: 100%; font-size: clamp(30px, 4.5vw, 62px); line-height: .9; letter-spacing: .18em; white-space: nowrap; }
 .footer__brand small { margin-top: 12px; font-family: 'Manrope', sans-serif; font-size: 8px; letter-spacing: .34em; opacity: .55; }
 .footer__brand .brand-monogram { width: 58px; height: 58px; flex: 0 0 58px; }
 .footer__brand .brand-monogram i { font-size: 35px; }

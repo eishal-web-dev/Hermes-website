@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Manrope', system-ui, sans-serif;
   color: #fff5e8;
-  background: #0d0806;
+  background: #0a0908;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   --nav-h: 80px;
@@ -30,7 +30,7 @@ button, a { font: inherit; }
 a { color: inherit; text-decoration: none; }
 button { color: inherit; }
 img { display: block; max-width: 100%; }
-::selection { background: #ffc47f; color: #140b08; }
+::selection { background: #c5a46d; color: #0a0908; }
 
 .site { min-height: 100vh; overflow: clip; }
 .mfz-shell {
@@ -56,8 +56,9 @@ img { display: block; max-width: 100%; }
   z-index: 60;
   height: var(--nav-h);
   color: #fff7ed;
-  border-bottom: 1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(18px);
+  background: linear-gradient(180deg, rgba(8,7,6,.54), transparent);
 }
 
 .mfz-nav__inner {
@@ -70,13 +71,35 @@ img { display: block; max-width: 100%; }
 
 .mfz-nav__logo {
   justify-self: start;
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(24px, 2.2vw, 34px);
-  line-height: 1;
-  letter-spacing: .015em;
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #f7f1e7;
 }
 
-.mfz-nav__logo span { color: #ffc47f; }
+.brand-monogram {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(239,225,199,.7);
+  border-radius: 50%;
+  font-family: 'Cormorant Garamond', serif;
+  color: #efe1c7;
+}
+.brand-monogram i { position: absolute; font-size: 22px; font-style: normal; line-height: 1; }
+.brand-monogram i:first-child { transform: translateX(-3px); }
+.brand-monogram i:last-child { transform: scaleX(-1) translateX(-3px); opacity: .76; }
+.brand-wordmark { display: flex; flex-direction: column; gap: 4px; }
+.brand-wordmark strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: .82;
+  letter-spacing: .14em;
+}
+.brand-wordmark small { font-size: 6px; font-weight: 500; letter-spacing: .29em; opacity: .72; }
 
 .mfz-nav__links {
   display: flex;
@@ -88,8 +111,8 @@ img { display: block; max-width: 100%; }
 .mfz-nav__links a {
   position: relative;
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .13em;
+  font-weight: 500;
+  letter-spacing: .2em;
 }
 
 .mfz-nav__links a::after {
@@ -110,12 +133,12 @@ img { display: block; max-width: 100%; }
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  border: 2px solid rgba(255,255,255,.76);
-  border-radius: 999px;
-  padding: 11px 17px;
+  border: 1px solid rgba(255,255,255,.58);
+  border-radius: 0;
+  padding: 12px 18px;
   font-size: 11px;
-  font-weight: 900;
-  letter-spacing: .08em;
+  font-weight: 500;
+  letter-spacing: .15em;
   transition: transform .2s ease, background .2s ease, color .2s ease;
 }
 
@@ -124,9 +147,11 @@ img { display: block; max-width: 100%; }
 
 .mobile-menu { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.56); backdrop-filter: blur(10px); }
 .mobile-menu__panel { margin-left: auto; min-height: 100%; width: min(88vw, 430px); padding: 24px; background: #120c09; display: flex; flex-direction: column; }
-.mobile-menu__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 54px; font-family: 'Anton', sans-serif; font-size: 22px; }
+.mobile-menu__top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 54px; font-family: 'Cormorant Garamond', serif; font-size: 22px; }
+.mobile-wordmark { letter-spacing: .12em; font-weight: 600; }
+.mobile-wordmark small { display: block; margin-top: 7px; font-family: 'Manrope', sans-serif; font-size: 7px; letter-spacing: .25em; opacity: .55; }
 .mobile-menu__top button { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,.25); background: transparent; }
-.mobile-menu__panel > a { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.12); font-family: 'Anton', sans-serif; font-size: 40px; line-height: 1; }
+.mobile-menu__panel > a { padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.12); font-family: 'Cormorant Garamond', serif; font-size: 40px; line-height: 1; }
 .mobile-menu__panel small { margin-top: auto; opacity: .5; line-height: 1.6; }
 
 /* HERO */
@@ -169,11 +194,11 @@ img { display: block; max-width: 100%; }
 }
 
 .bg-word-text {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(150px, 24vw, 390px);
-  font-weight: 900;
+  font-weight: 500;
   line-height: .78;
-  letter-spacing: -.045em;
+  letter-spacing: -.025em;
   white-space: nowrap;
   user-select: none;
 }
@@ -211,11 +236,11 @@ img { display: block; max-width: 100%; }
 
 .mfz-hero h1 {
   margin: 20px 0 0;
-  font-family: 'Anton', sans-serif;
-  font-size: clamp(62px, 7vw, 128px);
-  font-weight: 900;
-  line-height: .86;
-  letter-spacing: -.025em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(62px, 7.2vw, 132px);
+  font-weight: 500;
+  line-height: .8;
+  letter-spacing: -.045em;
   text-transform: uppercase;
 }
 
@@ -227,7 +252,10 @@ img { display: block; max-width: 100%; }
   margin: 23px 0 0;
   font-size: clamp(20px, 1.8vw, 29px);
   line-height: 1.2;
-  font-weight: 800;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 2.1vw, 34px);
+  font-weight: 400;
+  font-style: italic;
 }
 
 .mfz-hero__description {
@@ -249,12 +277,12 @@ img { display: block; max-width: 100%; }
 .mfz-hero__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
 .mfz-hero__chips span {
   border: 1px solid rgba(255,255,255,.2);
-  border-radius: 999px;
+  border-radius: 0;
   padding: 9px 13px 8px;
   font-size: 11px;
   line-height: 1;
-  font-weight: 800;
-  letter-spacing: .08em;
+  font-weight: 500;
+  letter-spacing: .14em;
   backdrop-filter: blur(10px);
 }
 

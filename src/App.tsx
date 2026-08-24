@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowDown, ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight, Menu, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const LIVE = 'https://loveluxury.com/uk/';
@@ -55,13 +55,26 @@ function Hero() {
 }
 
 function Story() {
+  const [active, setActive] = useState(0);
+  const showcase = [
+    { image: '/media/birkin-hd.webp', label: 'Hermès Birkin 25' },
+    { image: '/media/patek.webp', label: 'Patek Philippe Nautilus' },
+    { image: '/media/alhambra.webp', label: 'Van Cleef & Arpels Alhambra' },
+  ];
+  const previous = (active + showcase.length - 1) % showcase.length;
+  const next = (active + 1) % showcase.length;
+  const move = (direction: number) => setActive(value => (value + direction + showcase.length) % showcase.length);
+
   return <section className="mono-story" id="story">
     <motion.div className="mono-section-title" {...reveal}><span>01</span><h2>A private gallery<br/>for modern icons.</h2></motion.div>
     <motion.div className="mono-story__copy" {...reveal}><p>Love Luxury brings the world’s most coveted pieces into one considered collection. Every object is chosen for rarity, condition and provenance.</p><p>Visit us in Knightsbridge or discover the edit online. Our specialists are here to help you buy and sell with complete confidence.</p></motion.div>
-    <motion.div className="mono-gallery" {...reveal}>
-      <VcaFrame image="/media/alhambra.webp" label="Van Cleef & Arpels"/>
-      <VcaFrame image="/media/birkin-hd.webp" label="Hermès" className="vca-frame--hero"/>
-      <VcaFrame image="/media/patek.webp" label="Patek Philippe"/>
+    <motion.div className="mono-gallery mono-gallery--carousel" {...reveal}>
+      <button className="mono-gallery__arrow mono-gallery__arrow--left" onClick={() => move(-1)} aria-label="Previous piece"><ChevronLeft/></button>
+      <VcaFrame key={`left-${showcase[previous].label}`} image={showcase[previous].image} label={showcase[previous].label} className="vca-frame--preview"/>
+      <VcaFrame key={`main-${showcase[active].label}`} image={showcase[active].image} label={showcase[active].label} className="vca-frame--hero"/>
+      <VcaFrame key={`right-${showcase[next].label}`} image={showcase[next].image} label={showcase[next].label} className="vca-frame--preview"/>
+      <button className="mono-gallery__arrow mono-gallery__arrow--right" onClick={() => move(1)} aria-label="Next piece"><ChevronRight/></button>
+      <div className="mono-gallery__counter">{String(active + 1).padStart(2, '0')} <span>/ 03</span></div>
     </motion.div>
   </section>;
 }

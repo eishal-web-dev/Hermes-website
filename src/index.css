@@ -22,3 +22,7 @@
 /* Hero art-direction refinement */
 .mono-hero__word{top:31%;z-index:0;font-size:clamp(68px,11vw,170px);color:rgba(255,255,255,.105);filter:blur(2.2px);text-shadow:0 0 30px rgba(255,255,255,.035);pointer-events:none}.mono-hero__object-stage{top:45%;width:min(43vw,650px);height:min(56vh,610px);transform:translate(-50%,-43%);z-index:2}
 @media(max-width:760px){.mono-hero__word{top:27%;font-size:18vw;opacity:.8;filter:blur(1.5px)}.mono-hero__object-stage{top:39%;width:82vw;height:39vh;transform:translate(-50%,-39%)}}
+
+/* Final hero product spacing */
+.mono-hero__object-stage{top:42%;width:min(39vw,590px);height:min(52vh,565px)}
+@media(max-width:760px){.mono-hero__object-stage{top:37%;width:76vw;height:36vh}}

@@ -46,8 +46,7 @@ const slides: LuxurySlide[] = [
     tagline: 'The icon, curated.',
     description:
       'A collector-first way to discover exceptional Hermès pieces — authenticated, beautifully presented and ready for a private appointment.',
-    image:
-      'https://loveluxury.com/wp-content/uploads/2025/10/Hermes-Birkin-25-Orange-Minimum-Togo-Palladium-Hardware-2023-1-1024x683.jpg',
+    image: '/products/birkin.png',
     bgGradient:
       'radial-gradient(circle at 68% 42%, #743719 0%, #3b180e 28%, #190b08 62%, #0d0806 100%)',
     dominantColor: '#d46d32',
@@ -69,8 +68,7 @@ const slides: LuxurySlide[] = [
     tagline: 'Rare time. No compromise.',
     description:
       'Exceptional watches from the most important maisons, selected for collectors who care about provenance, condition and rarity.',
-    image:
-      'https://loveluxury.com/uk/wp-content/uploads/sites/2/sites/2/2025/08/Patek-Philippe-Nautilus-Olive-Green-32-Baguette-Diamonds-Bezel-5711-1300A-1-1024x683.jpg',
+    image: '/products/patek.png',
     bgGradient:
       'radial-gradient(circle at 68% 42%, #53624d 0%, #283329 28%, #111813 62%, #080b09 100%)',
     dominantColor: '#6d8066',
@@ -92,8 +90,7 @@ const slides: LuxurySlide[] = [
     tagline: 'Made to keep forever.',
     description:
       'Signature jewellery from Van Cleef & Arpels, Cartier and the world’s most celebrated houses, presented like objects of art.',
-    image:
-      'https://loveluxury.com/wp-content/uploads/2026/05/Van-Cleef-Arpels-Vintage-Alhambra-Carnelian-18K-Yellow-Gold-5-Motifs-Bracelet-2024-6438-1-1024x683.jpeg',
+    image: '/products/alhambra.png',
     bgGradient:
       'radial-gradient(circle at 68% 42%, #7b2427 0%, #451114 30%, #1d090b 64%, #0d0607 100%)',
     dominantColor: '#9d2d32',
@@ -301,30 +298,27 @@ function Hero() {
 
   const desktopVariants = {
     enter: (slideDirection: number) => ({
-      x: slideDirection > 0 ? 120 : -120,
-      y: 30,
-      scale: 0.65,
+      x: slideDirection > 0 ? 44 : -44,
+      y: 8,
+      scale: 0.96,
       opacity: 0,
-      rotateZ: slideDirection > 0 ? 15 : -15,
-      filter: 'blur(8px)',
+      filter: 'blur(3px)',
     }),
     center: {
       x: 0,
       y: 0,
       scale: 1,
       opacity: 1,
-      rotateZ: 0,
       filter: 'blur(0px)',
-      transition: { duration: reducedMotion ? 0.01 : 0.7, ease: [0.22, 1, 0.36, 1] as const },
+      transition: { duration: reducedMotion ? 0.01 : 0.9, ease: [0.22, 1, 0.36, 1] as const },
     },
     exit: (slideDirection: number) => ({
-      x: slideDirection > 0 ? -120 : 120,
-      y: -30,
-      scale: 0.65,
+      x: slideDirection > 0 ? -44 : 44,
+      y: -8,
+      scale: 0.96,
       opacity: 0,
-      rotateZ: slideDirection > 0 ? -15 : 15,
-      filter: 'blur(8px)',
-      transition: { duration: reducedMotion ? 0.01 : 0.5 },
+      filter: 'blur(3px)',
+      transition: { duration: reducedMotion ? 0.01 : 0.65 },
     }),
   };
 
@@ -339,27 +333,6 @@ function Hero() {
       onPointerLeave={() => setTilt({ x: 0, y: 0 })}
     >
       <div className="grain" />
-
-      <div className="lux-particles" aria-hidden="true">
-        {Array.from({ length: 22 }).map((_, particleIndex) => (
-          <motion.i
-            key={particleIndex}
-            style={{
-              left: `${6 + ((particleIndex * 17) % 90)}%`,
-              top: `${8 + ((particleIndex * 31) % 84)}%`,
-              background: particleIndex % 4 === 0 ? '#ffffff' : product.accentColor,
-              boxShadow: `0 0 13px ${product.accentColor}`,
-            }}
-            animate={reducedMotion ? undefined : {
-              y: [8, -18, 8],
-              x: [0, particleIndex % 2 === 0 ? 7 : -7, 0],
-              opacity: [0.08, 0.72, 0.08],
-              scale: [0.7, 1.35, 0.7],
-            }}
-            transition={{ duration: 4 + (particleIndex % 5), repeat: Infinity, delay: particleIndex * 0.11 }}
-          />
-        ))}
-      </div>
 
       <motion.div
         className="mfz-hero__glow"
@@ -464,9 +437,6 @@ function Hero() {
 
           <div className="mfz-hero__visual">
             <div className="product-stage">
-              <div className="circular-track" style={{ borderColor: product.accentColor }} />
-              <div className="circular-track circular-track--inner" style={{ borderColor: product.textColor }} />
-
               <AnimatePresence mode="popLayout" custom={direction}>
                 <motion.div
                   key={`product-${product.id}`}
@@ -480,14 +450,10 @@ function Hero() {
                   <motion.div
                     className="lux-product__inner"
                     animate={{
-                      rotateY: tilt.y,
-                      rotateX: tilt.x,
-                      y: reducedMotion ? 0 : [0, -12, 0],
+                      y: reducedMotion ? 0 : [0, -4, 0],
                     }}
                     transition={{
-                      rotateX: { type: 'spring', stiffness: 40, damping: 12 },
-                      rotateY: { type: 'spring', stiffness: 40, damping: 12 },
-                      y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' },
+                      y: { duration: 7, repeat: Infinity, ease: 'easeInOut' },
                     }}
                   >
                     <img
@@ -496,23 +462,12 @@ function Hero() {
                       draggable={false}
                       fetchPriority="high"
                       style={{
-                        transform: `rotate(${product.rotation}deg) scale(${product.scale})`,
-                        filter: `drop-shadow(0 28px 36px ${product.dominantColor}77) drop-shadow(0 0 24px ${product.accentColor}2f)`,
+                        transform: `scale(${product.scale})`,
+                        filter: `drop-shadow(0 30px 45px rgba(0,0,0,.42))`,
                       }}
                     />
                   </motion.div>
 
-                  {!reducedMotion && product.details.map((detail, detailIndex) => (
-                    <motion.span
-                      className={`floating-detail floating-detail--${detailIndex + 1}`}
-                      key={detail}
-                      style={{ borderColor: `${product.accentColor}80`, color: product.textColor }}
-                      animate={{ y: [0, -12, 0], opacity: [0.68, 1, 0.68] }}
-                      transition={{ duration: 3 + detailIndex, repeat: Infinity, delay: detailIndex * 0.35 }}
-                    >
-                      {detail}
-                    </motion.span>
-                  ))}
                 </motion.div>
               </AnimatePresence>
             </div>

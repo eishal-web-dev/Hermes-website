@@ -1,3 +1,3 @@
 # Hermès Website
 
-Luxury concept website.
+Luxury concept experience for curated handbags, watches and jewellery.

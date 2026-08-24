@@ -155,7 +155,11 @@ function Navbar() {
       <nav className="mfz-nav">
         <div className="mfz-shell mfz-nav__inner">
           <a className="mfz-nav__logo" href="#top">
-            LOVE <span>LUXURY</span>
+            <span className="brand-monogram" aria-hidden="true"><i>L</i><i>L</i></span>
+            <span className="brand-wordmark">
+              <strong>LOVE LUXURY</strong>
+              <small>KNIGHTSBRIDGE · LONDON</small>
+            </span>
           </a>
 
           <div className="mfz-nav__links">
@@ -186,7 +190,7 @@ function Navbar() {
               transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
             >
               <div className="mobile-menu__top">
-                <strong>LOVE LUXURY</strong>
+                <strong className="mobile-wordmark">LOVE LUXURY <small>KNIGHTSBRIDGE · LONDON</small></strong>
                 <button onClick={() => setOpen(false)} aria-label="Close menu"><X /></button>
               </div>
               <a href={`${LIVE}shop/`} target="_blank" rel="noreferrer">SHOP</a>
@@ -666,7 +670,10 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="mfz-shell">
-        <div className="footer__brand">LOVE <span>LUXURY</span></div>
+        <div className="footer__brand">
+          <span className="brand-monogram" aria-hidden="true"><i>L</i><i>L</i></span>
+          <span>LOVE LUXURY <small>KNIGHTSBRIDGE · LONDON</small></span>
+        </div>
         <div className="footer__bottom">
           <span>LONDON · DUBAI · WORLDWIDE</span>
           <span>CONCEPT REDESIGN</span>

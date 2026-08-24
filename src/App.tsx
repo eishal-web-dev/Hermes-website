@@ -46,7 +46,7 @@ const slides: LuxurySlide[] = [
     tagline: 'The icon, curated.',
     description:
       'A collector-first way to discover exceptional Hermès pieces — authenticated, beautifully presented and ready for a private appointment.',
-    image: '/products/birkin.png',
+    image: 'https://raw.githubusercontent.com/eishal-web-dev/Hermes-website/main/public/products/birkin.png',
     bgGradient:
       'radial-gradient(circle at 68% 42%, #743719 0%, #3b180e 28%, #190b08 62%, #0d0806 100%)',
     dominantColor: '#d46d32',
@@ -68,7 +68,7 @@ const slides: LuxurySlide[] = [
     tagline: 'Rare time. No compromise.',
     description:
       'Exceptional watches from the most important maisons, selected for collectors who care about provenance, condition and rarity.',
-    image: '/products/patek.png',
+    image: 'https://raw.githubusercontent.com/eishal-web-dev/Hermes-website/main/public/products/patek.png',
     bgGradient:
       'radial-gradient(circle at 68% 42%, #53624d 0%, #283329 28%, #111813 62%, #080b09 100%)',
     dominantColor: '#6d8066',
@@ -90,7 +90,7 @@ const slides: LuxurySlide[] = [
     tagline: 'Made to keep forever.',
     description:
       'Signature jewellery from Van Cleef & Arpels, Cartier and the world’s most celebrated houses, presented like objects of art.',
-    image: '/products/alhambra.png',
+    image: 'https://raw.githubusercontent.com/eishal-web-dev/Hermes-website/main/public/products/alhambra.png',
     bgGradient:
       'radial-gradient(circle at 68% 42%, #7b2427 0%, #451114 30%, #1d090b 64%, #0d0607 100%)',
     dominantColor: '#9d2d32',

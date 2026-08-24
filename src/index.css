@@ -42,3 +42,7 @@
 /* Larger gallery jewellery frames */
 .mono-gallery--carousel{max-width:1260px;padding:34px 62px 82px}.mono-gallery__track{grid-template-columns:.82fr 1.18fr .82fr;gap:clamp(16px,2.6vw,42px);min-height:390px}.mono-gallery__track .vca-frame--hero{width:108%;justify-self:center}.mono-gallery__track .vca-frame--preview{width:106%;justify-self:center;filter:scale(.92)}
 @media(max-width:760px){.mono-gallery--carousel{padding:28px 48px 72px}.mono-gallery__track{min-height:310px}.mono-gallery__track .vca-frame--hero{max-width:365px;width:108%}}
+
+/* Increased gallery scale */
+.mono-gallery--carousel{max-width:1320px;padding-inline:44px}.mono-gallery__track{grid-template-columns:.86fr 1.24fr .86fr;gap:clamp(10px,2vw,30px);min-height:430px}.mono-gallery__track .vca-frame--hero{width:118%}.mono-gallery__track .vca-frame--preview{width:114%;filter:scale(.95)}
+@media(max-width:760px){.mono-gallery--carousel{padding-inline:38px}.mono-gallery__track{min-height:350px}.mono-gallery__track .vca-frame--hero{max-width:400px;width:116%}}

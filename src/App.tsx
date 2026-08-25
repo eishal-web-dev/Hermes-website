@@ -88,7 +88,16 @@ function Story() {
 }
 
 function Closing() {
-  return <><section className="mono-closing"><span>SELL WITH LOVE LUXURY</span><h2>Your piece.<br/>Our expertise.</h2><p>Receive a private valuation from our specialists and sell with confidence.</p><a href={`${LIVE}sell/`} target="_blank" rel="noreferrer">Start a valuation <ArrowRight size={15}/></a></section><footer className="mono-footer"><strong>LOVE LUXURY</strong><span>KNIGHTSBRIDGE · LONDON</span><span>© 2026</span></footer></>;
+  return <><section className="mono-closing">
+    <motion.div className="mono-closing__copy" {...reveal}><span>SELL WITH LOVE LUXURY</span><h2>Your piece.<br/>Our expertise.</h2><p>Receive a private valuation from our specialists and sell with confidence.</p><a href={`${LIVE}sell/`} target="_blank" rel="noreferrer">Start a valuation <ArrowRight size={15}/></a></motion.div>
+    <motion.div className="mono-closing__still-life" initial={{ opacity: 0, x: 70 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: .3 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
+      <div className="closing-orbit closing-orbit--one"/>
+      <div className="closing-orbit closing-orbit--two"/>
+      <motion.img className="closing-product closing-product--bag" src="/media/birkin-hd.webp" alt="Hermès Birkin 25" whileHover={{ y: -9, scale: 1.025 }}/>
+      <motion.img className="closing-product closing-product--watch" src="/media/patek.webp" alt="Patek Philippe Nautilus" whileHover={{ rotate: 4, scale: 1.06 }}/>
+      <motion.img className="closing-product closing-product--jewel" src="/media/alhambra.webp" alt="Van Cleef & Arpels Alhambra" whileHover={{ rotate: -4, scale: 1.05 }}/>
+    </motion.div>
+  </section><footer className="mono-footer"><strong>LOVE LUXURY</strong><span>KNIGHTSBRIDGE · LONDON</span><span>© 2026</span></footer></>;
 }
 
 export default function App() { return <main className="mono-site"><Header/><Hero/><Story/><Closing/></main>; }

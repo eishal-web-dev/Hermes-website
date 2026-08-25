@@ -91,11 +91,13 @@ function Closing() {
   return <><section className="mono-closing">
     <motion.div className="mono-closing__copy" {...reveal}><span>SELL WITH LOVE LUXURY</span><h2>Your piece.<br/>Our expertise.</h2><p>Receive a private valuation from our specialists and sell with confidence.</p><a href={`${LIVE}sell/`} target="_blank" rel="noreferrer">Start a valuation <ArrowRight size={15}/></a></motion.div>
     <motion.div className="mono-closing__still-life" initial={{ opacity: 0, x: 70 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: .3 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
+      <div className="closing-archive-word">THE ARCHIVE</div>
       <div className="closing-orbit closing-orbit--one"/>
       <div className="closing-orbit closing-orbit--two"/>
-      <motion.img className="closing-product closing-product--bag" src="/media/birkin-burgundy.webp" alt="Burgundy crocodile Birkin 30" whileHover={{ y: -9, scale: 1.025 }}/>
-      <motion.img className="closing-product closing-product--watch" src="/media/patek.webp" alt="Patek Philippe Nautilus" whileHover={{ rotate: 4, scale: 1.06 }}/>
-      <motion.img className="closing-product closing-product--jewel" src="/media/emerald-necklace.webp" alt="Emerald and diamond high-jewellery necklace" whileHover={{ rotate: -4, scale: 1.05 }}/>
+      <motion.div className="closing-piece closing-piece--bag" whileHover={{ y: -10, scale: 1.025 }} transition={{ duration: .65, ease: [0.16, 1, 0.3, 1] }}><img className="closing-product" src="/media/birkin-burgundy.webp" alt="Burgundy crocodile Birkin 30"/><span><b>HERMÈS</b> BIRKIN 30 · CROCODILE</span></motion.div>
+      <motion.div className="closing-piece closing-piece--watch" whileHover={{ rotate: 3, scale: 1.06 }} transition={{ duration: .55 }}><img className="closing-product" src="/media/patek.webp" alt="Patek Philippe Nautilus"/><span><b>PATEK PHILIPPE</b> NAUTILUS</span></motion.div>
+      <motion.div className="closing-piece closing-piece--jewel" whileHover={{ rotate: -3, scale: 1.05 }} transition={{ duration: .55 }}><img className="closing-product" src="/media/emerald-necklace.webp" alt="Emerald and diamond high-jewellery necklace"/><span><b>HIGH JEWELLERY</b> EMERALD · DIAMOND</span></motion.div>
+      <div className="closing-pedestal"><span/></div>
     </motion.div>
   </section><footer className="mono-footer"><strong>LOVE LUXURY</strong><span>KNIGHTSBRIDGE · LONDON</span><span>© 2026</span></footer></>;
 }

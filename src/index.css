@@ -46,3 +46,6 @@
 /* Increased gallery scale */
 .mono-gallery--carousel{max-width:1320px;padding-inline:44px}.mono-gallery__track{grid-template-columns:.86fr 1.24fr .86fr;gap:clamp(10px,2vw,30px);min-height:430px}.mono-gallery__track .vca-frame--hero{width:118%}.mono-gallery__track .vca-frame--preview{width:114%;filter:scale(.95)}
 @media(max-width:760px){.mono-gallery--carousel{padding-inline:38px}.mono-gallery__track{min-height:350px}.mono-gallery__track .vca-frame--hero{max-width:400px;width:116%}}
+
+/* Keep the ornamental boundaries visibly larger than their products */
+.mono-gallery__track .vca-frame image{transform-box:fill-box;transform-origin:center;transform:scale(.82)!important}.mono-gallery__track .vca-frame--circle image{transform:scale(.86)!important}.mono-gallery__track .vca-frame:hover image{transform:scale(.88)!important}.mono-gallery__track .vca-frame--circle:hover image{transform:scale(.92)!important}

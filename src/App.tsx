@@ -93,9 +93,9 @@ function Closing() {
     <motion.div className="mono-closing__still-life" initial={{ opacity: 0, x: 70 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: .3 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
       <div className="closing-orbit closing-orbit--one"/>
       <div className="closing-orbit closing-orbit--two"/>
-      <motion.img className="closing-product closing-product--bag" src="/media/birkin-hd.webp" alt="Hermès Birkin 25" whileHover={{ y: -9, scale: 1.025 }}/>
+      <motion.img className="closing-product closing-product--bag" src="/media/birkin-burgundy.webp" alt="Burgundy crocodile Birkin 30" whileHover={{ y: -9, scale: 1.025 }}/>
       <motion.img className="closing-product closing-product--watch" src="/media/patek.webp" alt="Patek Philippe Nautilus" whileHover={{ rotate: 4, scale: 1.06 }}/>
-      <motion.img className="closing-product closing-product--jewel" src="/media/alhambra.webp" alt="Van Cleef & Arpels Alhambra" whileHover={{ rotate: -4, scale: 1.05 }}/>
+      <motion.img className="closing-product closing-product--jewel" src="/media/emerald-necklace.webp" alt="Emerald and diamond high-jewellery necklace" whileHover={{ rotate: -4, scale: 1.05 }}/>
     </motion.div>
   </section><footer className="mono-footer"><strong>LOVE LUXURY</strong><span>KNIGHTSBRIDGE · LONDON</span><span>© 2026</span></footer></>;
 }
